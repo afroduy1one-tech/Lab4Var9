@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.lab4_var9.ui.theme.Lab4_Var9Theme
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.runtime.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +32,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FactorialCheck() {
+    var n by remember { mutableStateOf("") }
+
     Column {
         Text("Проверка факториала")
+
+        OutlinedTextField(
+            value = n,
+            onValueChange = { n = it },
+            label = { Text("Введите n") }
+        )
     }
 }
 
