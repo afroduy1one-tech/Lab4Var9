@@ -14,8 +14,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
@@ -41,13 +43,18 @@ fun FactorialCheck() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("Проверка факториала")
+        Text(
+            text = "Проверка факториала",
+            fontWeight = FontWeight.Bold
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
             value = n,
             onValueChange = { n = it },
+            modifier = Modifier.width(250.dp),
+
             label = { Text("Введите n") }
         )
 
@@ -79,7 +86,9 @@ fun FactorialCheck() {
                 } else {
                     "Нельзя представить $factorial в виде произведения трех последовательных чисел"
                 }
-            }
+            },
+            modifier = Modifier.width(250.dp)
+
         ) {
             Text("Посчитать")
         }
@@ -87,7 +96,10 @@ fun FactorialCheck() {
         Spacer(modifier = Modifier.height(16.dp))
 
         if (result.isNotEmpty()) {
-            Text(result)
+            Text(
+                text = result,
+                modifier = Modifier.width(250.dp)
+            )
         }
     }
 }
