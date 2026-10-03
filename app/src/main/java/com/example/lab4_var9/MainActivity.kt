@@ -24,6 +24,8 @@ class MainActivity : ComponentActivity() {
 fun FactorialCheck() {
     var n by remember { mutableStateOf("") }
     var factorial by remember { mutableLongStateOf(1L) }
+    var k = 1L
+    var isPossible by remember { mutableStateOf(false) }
 
     Column {
         Text("Проверка факториала")
@@ -41,12 +43,32 @@ fun FactorialCheck() {
                 for (i in 1..n.toInt()) {
                     factorial *= i
                 }
+
+                isPossible = false
+                k = 1L
+
+                while (k * (k + 1) * (k + 2) <= factorial) {
+                    if (k * (k + 1) * (k + 2) == factorial) {
+                        isPossible = true
+                        break
+                    }
+
+                    k++
+                }
             }
         )
         {
             Text("Посчитать")
         }
         Text("Факториал: $factorial")
+
+        Text(
+            if (isPossible) {
+                "Можно представить"
+            } else {
+                "Нельзя представить"
+            }
+        )
     }
 }
 
